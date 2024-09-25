@@ -10,7 +10,6 @@ import { ApiSuccessResponse } from 'shared/decorator/api-success-response.decora
 import { SuccessResponseDto } from 'shared/dto/success-response.dto';
 import { ApiExtraModels, ApiTags } from '@nestjs/swagger';
 import { IsPublic } from 'shared/decorator/public.decorator';
-import { plainToInstance } from 'class-transformer';
 
 @ApiTags('soil')
 @Controller('soil')

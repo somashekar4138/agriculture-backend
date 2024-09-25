@@ -1,7 +1,6 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { Prisma, PrismaClient } from '@prisma/client';
 import { enhance } from '@zenstackhq/runtime';
-import { SoftDeleteMiddleware } from './middleware';
 import PaginationPaginate from 'prisma-paginate';
 
 @Injectable()
@@ -15,7 +14,6 @@ export class PrismaService extends PrismaClient<
     super();
 
     this.logger.log(`Prisma v${Prisma.prismaVersion.client}`);
-    this.$use(SoftDeleteMiddleware());
   }
 
   getClient(user?) {
