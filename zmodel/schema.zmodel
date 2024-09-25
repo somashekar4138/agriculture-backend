@@ -1,0 +1,62 @@
+import "base"
+
+generator client {
+    provider = "prisma-client-js"
+}
+
+plugin prisma {
+    provider = '@core/prisma'
+    format = true
+    output = "../prisma/schema.prisma"
+}
+
+generator nestjsDto {
+    provider                        = "prisma-generator-nestjs-dto"
+    output                          = "../shared/models"
+    outputToNestJsResourceStructure = "false"
+    flatResourceStructure           = "false"
+    exportRelationModifierClasses   = "true"
+    reExport                        = "true"
+    createDtoPrefix                 = "Create"
+    updateDtoPrefix                 = "Update"
+    dtoSuffix                       = "Dto"
+    entityPrefix                    = ""
+    entitySuffix                    = ""
+    classValidation                 = "true"
+    fileNamingStyle                 = "camel"
+    noDependencies                  = "false"
+    outputType                      = "class"
+    definiteAssignmentAssertion     = "false"
+    requiredResponseApiProperty     = "true"
+    prettier                        = "true"
+}
+
+datasource db {
+    provider = "postgresql"
+    url      = env("DATABASE_URL")
+}
+
+model RedSoil extends Base {
+    id        String @id @default(cuid())
+    address   String
+    latitude  Float
+    longitude Float
+    groundnut Int
+    kagi      Int
+    pulse     Int
+    vegetable Int
+    cereal    Int
+}
+
+model BlackSoil extends Base {
+    id        String @id @default(cuid())
+    address   String
+    latitude  Float
+    longitude Float
+    cotton    Int
+    wheat     Int
+    maize     Int
+    sunflower Int
+    sugarcane Int
+    rice      Int
+}

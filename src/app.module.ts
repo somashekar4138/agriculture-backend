@@ -6,6 +6,8 @@ import { JwtModule } from '@nestjs/jwt';
 import { jwtConstants } from './constants';
 import { AuthGuard } from 'shared/guards/auth.guard';
 import { APP_GUARD } from '@nestjs/core';
+import { SoilModule } from './soil/soil.module';
+import { PrismaModule } from './prisma/prisma.module';
 
 @Module({
   imports: [
@@ -15,6 +17,8 @@ import { APP_GUARD } from '@nestjs/core';
       secret: jwtConstants.secret,
       signOptions: { expiresIn: '1d' },
     }),
+    SoilModule,
+    PrismaModule,
   ],
   controllers: [AppController],
   providers: [
